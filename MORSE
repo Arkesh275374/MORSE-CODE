@@ -1,0 +1,75 @@
+MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
+                    'C':'-.-.', 'D':'-..', 'E':'.',
+                    'F':'..-.', 'G':'--.', 'H':'....',
+                    'I':'..', 'J':'.---', 'K':'-.-',
+                    'L':'.-..', 'M':'--', 'N':'-.',
+                    'O':'---', 'P':'.--.', 'Q':'--.-',
+                    'R':'.-.', 'S':'...', 'T':'-',
+                    'U':'..-', 'V':'...-', 'W':'.--',
+                    'X':'-..-', 'Y':'-.--', 'Z':'--..',
+                    '1':'.----', '2':'..---', '3':'...--',
+                    '4':'....-', '5':'.....', '6':'-....',
+                    '7':'--...', '8':'---..', '9':'----.',
+                    '0':'-----', ', ':'--..--', '.':'.-.-.-',
+                    '?':'..--..', '/':'-..-.', '-':'-....-',
+                    '(':'-.--.', ')':'-.--.-'}
+
+def encryptor(text):
+    
+    Encrypted_text=""
+    
+    for letters in text:
+        
+        if letters!=" ":
+            Encrypted_text+=MORSE_CODE_DICT[letters]+' '
+        
+        else:
+            Encrypted_text+=' '
+    
+    print(Encrypted_text)
+            
+
+def decryptor(text):
+    
+    keys_list=list(MORSE_CODE_DICT.keys())
+    values_list=list(MORSE_CODE_DICT.values())
+    text+=" "
+    morse=""
+    Decrypted_text=""
+    
+    for letters in text:
+        
+        if letters!=" ":
+            morse+=letters
+            i=0
+        
+        else:
+            i=+1
+            
+            if i==2:
+                Decrypted_text+=" "
+            
+            else:
+                Decrypted_text+=keys_list[values_list.index(morse)]
+                morse=""
+                
+    print(Decrypted_text)
+                
+            
+            
+    
+
+print("\t MORSE CODE CONVERTOR")
+ch=input("Press 'E' to Encrypt Or Press 'D' for Decrypt : ")
+
+if ch=='E' or ch=='e':
+    text_to_encrypt=input("Enter your text : ").upper()
+    encryptor(text_to_encrypt)
+
+elif ch=='D' or ch=='d':
+    text_to_decrypt=input("Enter Morse Code to Decrypt : ")
+    decryptor(text_to_decrypt)
+
+else:
+    print("invalid input")
+
